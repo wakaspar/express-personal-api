@@ -37,7 +37,9 @@ app.get('/', function homepage(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-
+app.get('/profile', function homepage(req, res) {
+  res.send('One day, I\'ll be a profile!');
+});
 /*
  * JSON API Endpoints
  */
@@ -75,7 +77,7 @@ app.get('/api', function apiIndex(req, res) {
         method: "PUT",
         path: "/api/parks/:id",
         description: "Update visited park"
-      }, // CHANGE ME
+      } // CHANGE ME
       {
         method: "GET",
         path: "/api/parks",
