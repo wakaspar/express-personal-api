@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
  * DATABASE *
  ************/
 
-// var db = require('./models');
+var db = require('./models');
 
 /**********
  * ROUTES *
@@ -46,14 +46,47 @@ app.get('/api', function apiIndex(req, res) {
   // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
   // It would be seriously overkill to save any of this to your database.
   res.json({
-    woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
-    message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/example-username/express_self_api/README.md", // CHANGE ME
-    baseUrl: "http://YOUR-APP-NAME.herokuapp.com", // CHANGE ME
+    woopsIForgotToDocumentAllMyEndpoints: false,
+    message: "Welcome to my personal API! Look on my Works, ye Mighty, and despair!!",
+    documentationUrl: "https://github.com/example-username/express_self_api/README.md",
+    baseUrl: "http://limitless-ridge-30436.herokuapp.com", // CHANGE ME
     endpoints: [
-      {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
+      {
+        method: "GET",
+        path: "/api",
+        description: "Describes all available endpoints"
+      },
+      {
+        method: "GET",
+        path: "/api/profile",
+        description: "Data about me",
+        name: "Will Kaspar",
+        githubLink: "https://github.com/wakaspar",
+        githubProfileImage: "https://avatars2.githubusercontent.com/u/22823273?v=3&s=460",
+        personalSiteLink: "https://wakaspar.github.io/",
+        currentCity: "San Francisco, CA",
+        pets: [{name: 'Indigo', type:'dog', breed:'cattle-beagle'}]
+      },
+      {
+        method: "POST",
+        path: "/api/parks",
+        description: "Create a new visited park"
+      } // CHANGE ME
+      {
+        method: "PUT",
+        path: "/api/parks/:id",
+        description: "Update visited park"
+      } // CHANGE ME
+      {
+        method: "GET",
+        path: "/api/parks",
+        description: "Get all parks"
+      }, // CHANGE ME
+      {
+        method: "GET",
+        path: "/api/parks/:id",
+        description: "Get one park by id"
+      }, // CHANGE ME
     ]
   })
 });
