@@ -37,7 +37,7 @@ app.get('/', function homepage(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-app.get('/profile', function homepage(req, res) {
+app.get('/profile', function profilePage(req, res) {
   res.send('One day, I\'ll be a profile!');
 });
 /*
@@ -72,22 +72,22 @@ app.get('/api', function apiIndex(req, res) {
         method: "POST",
         path: "/api/parks",
         description: "Create a new visited park"
-      }, // CHANGE ME
+      },
       {
         method: "PUT",
         path: "/api/parks/:id",
         description: "Update visited park"
-      } // CHANGE ME
+      },
       {
         method: "GET",
         path: "/api/parks",
         description: "Get all parks"
-      }, // CHANGE ME
+      },
       {
         method: "GET",
         path: "/api/parks/:id",
         description: "Get one park by id"
-      }, // CHANGE ME
+      }
     ]
   })
 });
