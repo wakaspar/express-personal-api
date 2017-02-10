@@ -48,7 +48,7 @@ app.get('/api', function apiIndex(req, res) {
   res.json({
     message: "Welcome to my personal API! Look on my Works, ye Mighty, and despair!!",
     documentationUrl: "https://github.com/example-username/express_self_api/README.md",
-    baseUrl: "http://limitless-ridge-30436.herokuapp.com", // CHANGE ME
+    baseUrl: "https://limitless-ridge-30436.herokuapp.com", // CHANGE ME
     endpoints: [
       {
         method: "GET",
