@@ -70,12 +70,12 @@ app.get('/api', function apiIndex(req, res) {
         method: "POST",
         path: "/api/parks",
         description: "Create a new visited park"
-      } // CHANGE ME
+      }, // CHANGE ME
       {
         method: "PUT",
         path: "/api/parks/:id",
         description: "Update visited park"
-      } // CHANGE ME
+      }, // CHANGE ME
       {
         method: "GET",
         path: "/api/parks",
