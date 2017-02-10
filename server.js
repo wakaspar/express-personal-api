@@ -46,7 +46,6 @@ app.get('/api', function apiIndex(req, res) {
   // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
   // It would be seriously overkill to save any of this to your database.
   res.json({
-    woopsIForgotToDocumentAllMyEndpoints: false,
     message: "Welcome to my personal API! Look on my Works, ye Mighty, and despair!!",
     documentationUrl: "https://github.com/example-username/express_self_api/README.md",
     baseUrl: "http://limitless-ridge-30436.herokuapp.com", // CHANGE ME
