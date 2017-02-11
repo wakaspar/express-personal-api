@@ -38,7 +38,7 @@ app.get('/', function homepage(req, res) {
 });
 
 app.get('/profile', function profilePage(req, res) {
-  res.send('One day, I\'ll be a profile!');
+  res.send($('#results').append(`Here be personal infos.`));
 });
 /*
  * JSON API Endpoints
