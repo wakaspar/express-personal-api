@@ -5,40 +5,48 @@
 
  var parks = [
    {
-     name: 'Joshua Tree National Park'
+     name: 'Joshua Tree National Park',
      location: 'California, USA',
      hasVisited: true,
      dateVisited: 'July 2015',
-     imgUrl: {default:'n/a'}
+     //imgUrl: {default:'n/a'}
   },
   {
-    name: 'Death Valley National Park'
+    name: 'Death Valley National Park',
     location: 'California, USA',
     hasVisited: true,
     dateVisited: 'January 2015',
-    imgUrl: {default:'n/a'}
+    //imgUrl: {default:'n/a'}
   },
   {
-   name: 'Seoraksan National Park'
+   name: 'Seoraksan National Park',
    location: 'Gangwon-do, South Korea',
    hasVisited: true,
    dateVisited: 'July 2015',
-   imgUrl: {default:'n/a'}
+   //imgUrl: {default:'n/a'}
  },
  {
-   name: 'Banff National Park'
+   name: 'Banff National Park',
    location: 'Alberta, Canada',
    hasVisited: false,
-   dateVisited: {default:'n/a'},
-   imgUrl: {default:'n/a'}
+   dateVisited: '',
+   //imgUrl: {default:'n/a'}
  },
 ];
 
-db.Park.create(new_park, function(err, park){
- if (err){
-   return console.log("Error:", err);
- }
-
- console.log("Created new park", park._id)
- process.exit(); // we're all done! Exit the program.
-})
+// remove all parks from database
+db.Park.remove({}, function(err, books){
+  if(err){
+    console.log('error during remove', err);
+  } else {
+    console.log('removed all parks');
+    // seed database with parks from parks_list
+    db.Park.create(parks, function(err, park){
+      if (err){
+        return console.log("Error:", err);
+      }
+      console.log("Created new parks", park._id)
+      process.exit(); // we're all done! Exit the program.
+    })
+  }
+});

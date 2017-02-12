@@ -21,6 +21,22 @@ app.use(function(req, res, next) {
 
 var db = require('./models');
 
+var profile = {
+  name: "Will Kaspar",
+  githubLink: "https://github.com/wakaspar",
+  githubProfileImage: "https://avatars2.githubusercontent.com/u/22823273?v=3&s=460",
+  personalSiteLink: "https://wakaspar.github.io/",
+  currentCity: "San Francisco, CA",
+  pets: [
+    {name: 'Indigo', type: 'dog', breed: 'cattle-beagle'},
+    {name: 'Furball', type: 'fish', breed: 'goldfish'}
+  ],
+  plants: [
+    {name: 'Bernard', type: 'plant', breed: 'aeonium arboreum'},
+    {name: 'Francis', type: 'plant', breed: 'sempervivum tectorum'}
+  ]
+};
+
 /**********
  * ROUTES *
  **********/
@@ -38,11 +54,65 @@ app.get('/', function homepage(req, res) {
 });
 
 app.get('/profile', function profilePage(req, res) {
-  res.send($('#results').append(`Here be personal infos.`));
+  res.json(profile);
 });
 /*
  * JSON API Endpoints
  */
+
+// gets all parks
+app.get('/api/parks', function allParks(req, res){
+  db.Park.find(function(err, parks){
+    if (err){console.log('error: ',err);}
+    res.json(parks);
+  });
+});
+
+// get one park by id
+app.get('/api/parks/:id', function oneParkById(req, res){
+  db.Park.findOne({ _id: req.params.id }, function (err, park){
+    if (err){console.log('error: ', err);}
+    res.json(park);
+  });
+});
+
+// create new park
+app.post('/api/parks', function(req, res){
+  console.log('parks create: ', req.body);
+  var newPark = new db.Park(req.body);
+  newPark.save(function handledPark(err, savedPark){
+    res.json(savedPark);
+  });
+});
+
+// delete existing park
+app.delete('/api/parks/:id', function(req, res){
+  var parkId = req.params.id;
+  db.Park.findOneAndRemove({ _id: parkId }, function(err, deletedPark){
+    res.json(deletedPark);
+  });
+});
+
+// update existing park
+app.put('/api/parks/:id', function(req, res){
+  console.log('parks update ', req.body);
+  var parkId = req.params.id;
+  var nameUp = req.body.name;
+  var locUp = req.body.location;
+  var visitUp = req.body.hasVisited;
+  var dateUp = req.body.dateVisited;
+  db.Park.findByIdAndUpdate({ _id: parkId }, {
+    name: nameUp,
+    location: locUp,
+    hasVisited: visitUp,
+    dateVisited: dateUp
+  },
+   {new: true}, function(err, updatedPark){
+    if(err){console.log('error: ', err)}
+    res.send(updatedPark);
+  });
+});
+
 
 app.get('/api', function apiIndex(req, res) {
   // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
@@ -61,12 +131,16 @@ app.get('/api', function apiIndex(req, res) {
         method: "GET",
         path: "/api/profile",
         description: "Data about me",
-        name: "Will Kaspar",
-        githubLink: "https://github.com/wakaspar",
-        githubProfileImage: "https://avatars2.githubusercontent.com/u/22823273?v=3&s=460",
-        personalSiteLink: "https://wakaspar.github.io/",
-        currentCity: "San Francisco, CA",
-        pets: [{name: 'Indigo', type:'dog', breed:'cattle-beagle'}]
+      },
+      {
+        method: "GET",
+        path: "/api/parks",
+        description: "Get all parks"
+      },
+      {
+        method: "GET",
+        path: "/api/parks/:id",
+        description: "Get one park by id"
       },
       {
         method: "POST",
@@ -79,14 +153,9 @@ app.get('/api', function apiIndex(req, res) {
         description: "Update visited park"
       },
       {
-        method: "GET",
-        path: "/api/parks",
-        description: "Get all parks"
-      },
-      {
-        method: "GET",
+        method: "DELETE",
         path: "/api/parks/:id",
-        description: "Get one park by id"
+        description: "Delete visited park"
       }
     ]
   })
