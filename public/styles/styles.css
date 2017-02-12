@@ -16,6 +16,11 @@ footer {
   margin: 10px;
 }
 
+h4 a {
+
+  display: inherit;
+}
+
 #placesCamped {
   color: #088e40;
   background-color: #ceefd3;

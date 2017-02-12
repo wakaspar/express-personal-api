@@ -32,6 +32,27 @@
    dateVisited: '',
    //imgUrl: {default:'n/a'}
  },
+ {
+   name: 'Grand Teton National Park',
+   location: 'Wyoming, USA',
+   hasVisited: false,
+   dateVisited: '',
+   //imgUrl: {default:'n/a'}
+ },
+ {
+   name: 'Arches National Park',
+   location: 'Utah, USA',
+   hasVisited: false,
+   dateVisited: '',
+   //imgUrl: {default:'n/a'}
+ },
+ {
+   name: 'Badlands National Park',
+   location: 'Montana, USA',
+   hasVisited: false,
+   dateVisited: '',
+   //imgUrl: {default:'n/a'}
+ }
 ];
 
 // remove all parks from database
