@@ -2,17 +2,32 @@ console.log("Sanity Check: JS is working!");
 
 $(document).ready(function(){
 
-  // your code
-  var render = function(data){
+  // renders all parks in browser
+  var renderAll = function(data){
     for(var i=0; i<data.length; i++){
-      $('#results').append(`<p>${data[i].name}</p>`);
+      if(data[i].hasVisited == false){
+      $('#placesNotYetCamped').append(
+        // html to be appended
+        `<div class="container-fluid panel">
+              <li>${data[i].name}</li>
+              <li>${data[i].location}</li>
+        </div>`);
+      } else {
+        $('#placesCamped').append(
+          // html to be appended
+          `<div class="container-fluid panel">
+                <li>${data[i].name}</li>
+                <li>${data[i].location}</li>
+                <li>${data[i].dateVisited}</li>
+          </div>`);
+      }
     }
   }
 
   var onSuccess = function(res){
     console.log('good job, ajax');
     console.log(res);
-    render(res);
+    renderAll(res);
   }
   var onError = function(){
     console.log('try again, ajax');
