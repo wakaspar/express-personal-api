@@ -54,7 +54,7 @@ app.get('/', function homepage(req, res) {
 });
 
 app.get('/profile', function profilePage(req, res) {
-  res.json(profile);
+  res.send(profile);
 });
 /*
  * JSON API Endpoints
@@ -64,7 +64,7 @@ app.get('/profile', function profilePage(req, res) {
 app.get('/api/parks', function allParks(req, res){
   db.Park.find(function(err, parks){
     if (err){console.log('error: ',err);}
-    res.json(parks);
+    res.send(parks);
   });
 });
 
@@ -72,7 +72,7 @@ app.get('/api/parks', function allParks(req, res){
 app.get('/api/parks/:id', function oneParkById(req, res){
   db.Park.findOne({ _id: req.params.id }, function (err, park){
     if (err){console.log('error: ', err);}
-    res.json(park);
+    res.send(park);
   });
 });
 
@@ -81,7 +81,7 @@ app.post('/api/parks', function(req, res){
   console.log('parks create: ', req.body);
   var newPark = new db.Park(req.body);
   newPark.save(function handledPark(err, savedPark){
-    res.json(savedPark);
+    res.send(savedPark);
   });
 });
 
@@ -89,7 +89,7 @@ app.post('/api/parks', function(req, res){
 app.delete('/api/parks/:id', function(req, res){
   var parkId = req.params.id;
   db.Park.findOneAndRemove({ _id: parkId }, function(err, deletedPark){
-    res.json(deletedPark);
+    res.send(deletedPark);
   });
 });
 
