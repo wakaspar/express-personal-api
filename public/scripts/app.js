@@ -35,7 +35,7 @@ $(document).ready(function(){
 
   $.ajax({
     method: "GET",
-    url: "/api/parks/",
+    url: "./api/parks/",
     success: onSuccess,
     error: onError
   });
