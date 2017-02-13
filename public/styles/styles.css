@@ -1,12 +1,11 @@
 body {
   color: #088e40;
   font-family: Helvetica, Arial, sans-serif;
-  background-color: lightgreen; /* Sanity Check! */
+  background-color: lightgreen;
 }
 
-h1 {
-  margin-top: 100px;
-  text-align: center;
+h1 small a {
+  font-size: .5em;
 }
 
 footer {
@@ -16,9 +15,41 @@ footer {
   margin: 10px;
 }
 
-h4 a {
+form {
+  text-align: center;
+  background-color: skyblue;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
 
-  display: inherit;
+.hide-me {
+  visibility: hidden;
+}
+
+.jumbotron {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.my-panel {
+  box-shadow: 3px 2px grey;
+}
+
+.btn-success, .btn-danger {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 10px;
+}
+
+#new-box p {
+  color: darkblue;
+  display: inline-block;
+}
+
+#has-visited-btn {
+  padding-right: 10px;
 }
 
 #placesCamped {

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="">
-    <title>Campsite Coordinator</title>
+    <title>CampInator | Home</title>
 
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -20,19 +20,48 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <h1 class="jumbotron page-header">Where I've Been Camping <br>
-            <small><a href="/api">Read My API Documentation</a></small>
-
-          </h1>
-          <div id="placesCamped" class="col-md-5 col-md-offset-1 container-fluid panel">
-            <h2>Places I've Camped</h2>
-          </div>
-          <div id="placesNotYetCamped" class="col-md-5 col-md-offset-1 container-fluid panel">
-            <h2>Places I've Not Yet Camped</h2>
+          <!-- Header -->
+          <div class="container-fluid jumbotron">
+            <h1>CampInator<br>
+              <small><a href="/api">Read My API Documentation</a></small>
+            </h1>
+            <input id="new-btn" class="btn-danger" type="button" name="new" value="Add a new park">
           </div>
         </div>
       </div>
-      <footer>© 2017 Will Kaspar</footer>
+
+        <!-- New Park Form -->
+        <div id="new-box" class="hide-me col-md-9 col-md-offset-2">
+          <form class="my-panel" action="submit" method="post">
+            <input type="text" name="name" placeholder="name">
+            <input type="text" name="location" placeholder="location">
+            <input type="text" name="dateVisited" placeholder="date first visited">
+            <p><em>Have you been there before?</em></p>
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-warning active">
+                <input id="option1" type="radio" name="option" autocomplete="off" checked>Yes
+              </label>
+              <label class="btn btn-warning">
+                <input id="option2" type="radio" name="option" autocomplete="off">No
+              </label>
+            </div>
+            <input id="submit-btn" class="btn-success" type="button" name="submit" value="Submit your park">
+          </form>
+        </div>
+
+
+        <!-- Places Camped Box -->
+        <div id="placesCamped" class="my-panel col-md-5 col-md-offset-1 container-fluid panel">
+            <h2>Places Camped</h2>
+            <br>
+          </div>
+        <!-- Not Yet Camped Box -->
+        <div id="placesNotYetCamped" class="my-panel col-md-5 col-md-offset-1 container-fluid panel">
+            <h2>Not Yet Camped</h2>
+            <br>
+          </div>
+      </div>
     </div>
+    <footer>© 2017 Will Kaspar</footer>
   </body>
 </html>
