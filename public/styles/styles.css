@@ -45,6 +45,9 @@ footer {
   margin: 10px;
 }
 
+img {
+  max-width: 50px;
+}
 
 
 .btn-md {

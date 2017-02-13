@@ -14,6 +14,7 @@ $(document).ready(function(){
 
   // renders data to the page
   var renderAll = function(parks){
+    console.log(parks);
     for(var i=0; i<parks.length; i++){
       if(parks[i].hasVisited == false){
         $('#placesNotYetCamped').append(
