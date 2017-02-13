@@ -1,4 +1,4 @@
-console.log("Sanity Check: JS is working!");
+// app.js - application controller
 
 $(document).ready(function(){
 
@@ -12,15 +12,15 @@ $(document).ready(function(){
       if(parks[i].hasVisited == false){
         $('#placesNotYetCamped').append(
           // html to be appended
-        `<div class="container-fluid panel park-panel">
+        `<div class="container-fluid panel park-panel data-id='${parks[i].id}' ">
           <img src="${parks[i].photo}">
           <li>${parks[i].name}</li>
           <li>${parks[i].location}</li>
           <br>
-          <button id="edit-btn" type="button" class="btn btn-default btn-md">
+          <button id="edit-btn" type="button" class="btn btn-default btn-md data-id='${parks[i].id}' ">
             <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
           </button>
-          <button id="trash-btn" type="button" class="btn btn-default btn-md">
+          <button id="trash-btn" type="button" class="btn btn-default btn-md data-id='${parks[i].id}' ">
             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
           </button>
         </div>`);
