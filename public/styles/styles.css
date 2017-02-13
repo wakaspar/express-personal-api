@@ -23,6 +23,12 @@ form {
   margin-bottom: 10px;
 }
 
+.btn-md {
+  display: inline;
+  position: relative;
+  left: 80%;
+}
+
 .hide-me {
   visibility: hidden;
 }

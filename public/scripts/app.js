@@ -3,15 +3,22 @@ console.log("Sanity Check: JS is working!");
 $(document).ready(function(){
 
   // renders data to the page
-  var render = function(data){
+  var renderAll = function(data){
     for(var i=0; i<data.length; i++){
       if(data[i].hasVisited == false){
         $('#placesNotYetCamped').append(
           // html to be appended
-          `<div class="container-fluid panel">
+        `<div class="container-fluid panel">
           <li>${data[i].name}</li>
           <li>${data[i].location}</li>
-          </div>`);
+          <br>
+          <button type="button" class="btn btn-default btn-md">
+            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+          </button>
+          <button type="button" class="btn btn-default btn-md">
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+          </button>
+        </div>`);
         } else {
           $('#placesCamped').append(
             // html to be appended
@@ -19,6 +26,13 @@ $(document).ready(function(){
             <li>${data[i].name}</li>
             <li>${data[i].location}</li>
             <li>${data[i].dateVisited}</li>
+            <br>
+            <button type="button" class="btn btn-default btn-md">
+              <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-default btn-md">
+              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            </button>
             </div>`);
           }
         }
@@ -27,23 +41,29 @@ $(document).ready(function(){
   // runs on successful Ajax call
   var onSuccess = function(res){
     console.log('good job, ajax');
-    render(res);
+    renderAll(res);
   }
   // runs on erroneous Ajax call
   var onError = function(){
     console.log('try again, ajax');
   }
 
-  var lilSuccess = function(res){
+  var lilSuccess = function(data){
     console.log('good post');
-    console.log(res);
-    if (res.option === 'off'){
-      res.hasVisited = true;
-      console.log('hasVisited ',res.hasVisited);
-    } else {
-      res.hasVisited = false;
-      console.log('hasVisited ',res.hasVisited);
-    }
+    console.log(data);
+    $('#placesCamped').append(
+      `<div class="container-fluid panel">
+        <li>${data.name}</li>
+        <li>${data.location}</li>
+        <li>${data.dateVisited}</li>
+        <br>
+        <button type="button" class="btn btn-default btn-md">
+          <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="btn btn-default btn-md">
+          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </button>
+      </div>`);
   }
 
 
