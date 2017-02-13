@@ -1,19 +1,32 @@
 body {
-  color: #088e40;
+  color: #918a6d;
   font-family: Helvetica, Arial, sans-serif;
   background-color: lightgreen;
 }
 
-h1 small a {
-  font-size: .5em;
+
+h1, h2 {
+  font-family: 'Pacifico';
+  text-shadow: 2px 2px black;
 }
 
-footer {
-  background-color: darkgreen;
-  text-align: center;
-  border-radius: 10px;
-  margin: 10px;
+
+h1 p {
+  color: #000;
+  font-family: Helvetica, Arial, sans-serif;
+  text-shadow: none;
 }
+
+
+h1 a {
+  font-size: .45em;
+}
+
+
+p strong {
+  color: #000;
+}
+
 
 form {
   text-align: center;
@@ -23,24 +36,44 @@ form {
   margin-bottom: 10px;
 }
 
+
+footer {
+  color: #918a6d;
+  background-color: #40703e;
+  text-align: center;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+
+
 .btn-md {
   display: inline;
   position: relative;
-  left: 80%;
+  left: 75%;
 }
+
 
 .hide-me {
   visibility: hidden;
 }
 
+
 .jumbotron {
+  border-radius: 18px;
+  background-image: url("../images/green-goblin.png");
   margin-top: 25px;
   text-align: center;
 }
 
-.my-panel {
-  box-shadow: 3px 2px grey;
+
+.park-panel {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: #000000;
+  border-radius: 15px;
 }
+
 
 .btn-success, .btn-danger {
   display: inline-block;
@@ -49,25 +82,24 @@ form {
   margin: 10px;
 }
 
+
+
 #new-box p {
-  color: darkblue;
   display: inline-block;
 }
 
-#has-visited-btn {
-  padding-right: 10px;
-}
 
 #placesCamped {
-  color: #088e40;
-  background-color: #ceefd3;
+  background-image: url("../images/wild-sea.png");
   font-family: Helvetica, Arial, sans-serif;
   text-align: left;
+  box-shadow: 3px 2px grey;
 }
 
+
 #placesNotYetCamped {
-  color: #088e40;
   background-color: lightpink;
   font-family: Helvetica, Arial, sans-serif;
   text-align: left;
+  box-shadow: 3px 2px grey;
 }
