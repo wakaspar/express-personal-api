@@ -2,24 +2,18 @@ console.log("Sanity Check: JS is working!");
 
 $(document).ready(function(){
 
-  // delete TODO:BUTTONS EXIST ON FRONT END, ROUTES WORK, NEEDS TO BE CONNECTED
-  $('#trash-btn').on('click', function(event){
-    console.log('trash button says hello');
-  });
-  // update TODO:BUTTONS EXIST ON FRONT END, ROUTES WORK, NEEDS TO BE CONNECTED
-  $('.btn-default').on('click', function(event){
-    event.preventDefault();
-    console.log('update me');
-  });
 
   // renders data to the page
   var renderAll = function(parks){
     console.log(parks);
     for(var i=0; i<parks.length; i++){
+      if(!parks[i].photo){
+        parks[i].photo = '../images/default.jpeg'; }
       if(parks[i].hasVisited == false){
         $('#placesNotYetCamped').append(
           // html to be appended
         `<div class="container-fluid panel park-panel">
+          <img src="${parks[i].photo}">
           <li>${parks[i].name}</li>
           <li>${parks[i].location}</li>
           <br>
@@ -34,6 +28,7 @@ $(document).ready(function(){
           $('#placesCamped').append(
             // html to be appended
             `<div class="container-fluid panel park-panel">
+            <img src="${parks[i].photo}">
             <li>${parks[i].name}</li>
             <li>${parks[i].location}</li>
             <li>${parks[i].dateVisited}</li>
@@ -50,11 +45,13 @@ $(document).ready(function(){
       }
   // renders new park to homepage list
   var renderOne = function(park){
-    console.log(park);
+    if(!park.photo){
+      park.photo = '../images/default.jpeg'; }
     if(park.hasVisited == false){
       // html to be appened
       $('#placesNotYetCamped').append(
       `<div class="container-fluid panel park-panel">
+        <img src="${park.photo}">
         <li>${park.name}</li>
         <li>${park.location}</li>
         <li>${park.dateVisited}</li>
@@ -70,6 +67,7 @@ $(document).ready(function(){
       // html to be appened
       $('#placesCamped').append(
       `<div class="container-fluid panel park-panel">
+        <img src="${park.photo}">
         <li>${park.name}</li>
         <li>${park.location}</li>
         <li>${park.dateVisited}</li>
@@ -111,6 +109,16 @@ $(document).ready(function(){
       success: renderOne,
       error: onError
     });
+  });
+
+  // delete TODO:BUTTONS EXIST ON FRONT END, ROUTES WORK, NEEDS TO BE CONNECTED
+  $('#trash-btn').on('click', function(event){
+    console.log('trash button says hello');
+  });
+  // update TODO:BUTTONS EXIST ON FRONT END, ROUTES WORK, NEEDS TO BE CONNECTED
+  $('.btn-default').on('click', function(event){
+    event.preventDefault();
+    console.log('update me');
   });
 
 }); // closes .ready

@@ -7,7 +7,6 @@ var ParkSchema = new Schema ({
   hasVisited: Boolean,
   dateVisited: String,
   photo: String,
-  vegetation: String
 });
 
 var Park = mongoose.model('Park', ParkSchema);

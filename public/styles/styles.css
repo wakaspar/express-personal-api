@@ -38,7 +38,7 @@ form {
 
 
 footer {
-  color: #918a6d;
+  color: #fff;
   background-color: #40703e;
   text-align: center;
   border-radius: 10px;
@@ -46,7 +46,8 @@ footer {
 }
 
 img {
-  max-width: 50px;
+  border-radius: 15px;
+  max-width: 100px;
 }
 
 
