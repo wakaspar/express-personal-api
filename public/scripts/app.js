@@ -12,31 +12,31 @@ $(document).ready(function(){
       if(parks[i].hasVisited == false){
         $('#placesNotYetCamped').append(
           // html to be appended
-        `<div class="container-fluid panel park-panel data-id='${parks[i].id}' ">
+        `<div class="container-fluid panel park-panel data-id='${parks[i]._id}' ">
           <img src="${parks[i].photo}">
           <li>${parks[i].name}</li>
           <li>${parks[i].location}</li>
           <br>
-          <button id="edit-btn" type="button" class="btn btn-default btn-md data-id='${parks[i].id}' ">
+          <button type="button" class="edit-btn btn btn-default btn-md data-id='${parks[i]._id}' ">
             <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
           </button>
-          <button id="trash-btn" type="button" class="btn btn-default btn-md data-id='${parks[i].id}' ">
+          <button type="button" class="trash-btn btn btn-default btn-md data-id='${parks[i]._id}' ">
             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
           </button>
         </div>`);
         } else {
           $('#placesCamped').append(
             // html to be appended
-            `<div class="container-fluid panel park-panel">
+            `<div class="container-fluid panel park-panel data-id='${parks[i]._id}'">
             <img src="${parks[i].photo}">
             <li>${parks[i].name}</li>
             <li>${parks[i].location}</li>
             <li>${parks[i].dateVisited}</li>
             <br>
-            <button id="edit-btn" type="button" class="btn btn-default btn-md">
+            <button type="button" class="edit-btn btn btn-default btn-md data-id='${parks[i]._id}'">
               <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
             </button>
-            <button id="trash-btn" type="button" class="btn btn-default btn-md">
+            <button type="button" class="trash-btn btn btn-default btn-md data-id='${parks[i]._id}'">
               <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
             </button>
             </div>`);
@@ -50,16 +50,16 @@ $(document).ready(function(){
     if(park.hasVisited == false){
       // html to be appened
       $('#placesNotYetCamped').append(
-      `<div class="container-fluid panel park-panel">
+      `<div class="container-fluid panel park-panel data-id='${park._id}'">
         <img src="${park.photo}">
         <li>${park.name}</li>
         <li>${park.location}</li>
         <li>${park.dateVisited}</li>
         <br>
-        <button type="button" class="btn btn-default btn-md">
+        <button type="button" class="btn btn-default btn-md data-id='${park._id}'">
           <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
         </button>
-        <button type="button" class="btn btn-default btn-md">
+        <button type="button" class="btn btn-default btn-md data-id='${park._id}'">
           <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
           </button>
       </div>`);
@@ -101,7 +101,6 @@ $(document).ready(function(){
   });
   // 'Form' event -> adds new park to database
   $('#submit-btn').on('click', function(event){
-    console.log('submit button says hello');
     $.ajax({
       method: "POST",
       url: "./api/parks/",
@@ -112,13 +111,12 @@ $(document).ready(function(){
   });
 
   // delete TODO:BUTTONS EXIST ON FRONT END, ROUTES WORK, NEEDS TO BE CONNECTED
-  $('#trash-btn').on('click', function(event){
+  $('.main-panel').on('click', '.trash-btn', function(event){
     console.log('trash button says hello');
   });
   // update TODO:BUTTONS EXIST ON FRONT END, ROUTES WORK, NEEDS TO BE CONNECTED
-  $('.btn-default').on('click', function(event){
-    event.preventDefault();
-    console.log('update me');
+  $('.main-panel').on('click', '.edit-btn', function(event){
+    console.log('update button says hello');
   });
 
 }); // closes .ready
